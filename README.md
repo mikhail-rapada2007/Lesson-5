@@ -50,8 +50,36 @@ class TweetListView(ListView):
 
 11. pk and id. LEarn how django can call the ID of the database.
 
-12. NExt topic is create view4
-   
+12. Next topic is create view
+
+
+
+July 27, 2026
+1. We can do submissions either HTML form or Django form.
+in HTML, you can do <form method="post"></form> to make a form section and <input type="text" name="content placeholder=
+also make a button <button type="submit">submit</button>
+
+addd {% csrf_token %} whenever making forms 
+
+make a new URL rout for this submission form which is def ______(request)
+
+add tweet.objects.create(content=request.POST.get('CONTENT'))
+
+
+2. In template inheritance, not only can u use extends but also {includes }
+you can use includes to make unique layout for each user
+
+
+3. DJANGO forms
+forms.py inside the tweets
+from django import forms
+
+class TweetForm(forms.Form):
+   content = forms.CharField(
+5. 
+
+
+6. 
     
 
 
