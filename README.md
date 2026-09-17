@@ -126,7 +126,12 @@ class TweetListView(ListView):
    def get_context_data(self. *args, **kwargs):
       context = super(TweetListView, self).get_context
       
+fixnow in html add the {% empty %} 
+to show that no tweets are found or if no tweets are found from the database
 
+{% if get_query %}
+
+something like that
 
 
 
