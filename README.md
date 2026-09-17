@@ -79,8 +79,54 @@ class TweetForm(forms.Form):
 5. 
 
 
-6. 
+SEARCH FUNCTION
+https://www.google.com/search?q=wordgoeshere
+?q comes together, q stands for query 
+
+this can be class based or function based 
+
+*in views.py*
+
+class TweetListView(ListView):
+   queryset = Tweet.objects.all()
+   template_name = 'tweets/list.html'
+
+   def get_queryset(self. *args, **kwargs):
+      qs = Tweet.objects.all()
+      query = self.request.GET.get('query', none)
+      print(query) <- proves that we are getting something
+      if query is not None:
+         qs = qs.filter(content.icontains=query)
+      return qs
+
+   def get_context_data(self. *args, **kwargs):
+      context = super(TweetListView, self).get_context
+      
+
     
+or just use 
+use it in views.py
+
+from django.db.models import Q
+class TweetListView(ListView):
+   queryset = Tweet.objects.all()
+   template_name = 'tweets/list.html'
+
+   def get_queryset(self. *args, **kwargs):
+      qs = Tweet.objects.all()
+      query = self.request.GET.get('query', none)
+      print(query) <- proves that we are getting something
+      if query is not None:
+         qs = qs.filter(
+            Q(content__icontains=query) | 
+            Q(tags__icontains=query)
+         )
+      return qs
+
+   def get_context_data(self. *args, **kwargs):
+      context = super(TweetListView, self).get_context
+      
+
 
 
 
