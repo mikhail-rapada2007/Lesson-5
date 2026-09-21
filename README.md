@@ -130,8 +130,75 @@ fixnow in html add the {% empty %}
 to show that no tweets are found or if no tweets are found from the database
 
 {% if get_query %}
-
 something like that
 
 
+September 21, 2026
+SLUG
+to generate a randomly generated string for an object. Good for security 
+
+UUID is the advanced version 
+
+in views.py
+class 
+   trmplstr_name = 
+   def get_object(self):
+      id = self.kwargs.get(""id)  change id to slug when slug is implemented
+      try:
+         obj - 
+      except
+
+in models.py
+slug = models.SlugFIeld(blank=True, null=True, unique=True)
+put in tweet models ^
+
+
+regular expression 
+in urls.py
+urlpatterns = [
+    re_path(r'^article/(?P<year>[0-9]{4})/$', views.year_archive),
+]
+instead of article, it eoulf br P<id>[]
+
+
+use django signals so that slugs is automated
+post save if object needs to be created first
+
+pre-save if otherwise
+
+NEW
+utils.py
+import random
+import string
+from django.utils.text import slugify
+
+def random_string_generator(size=10, char = string.ascii_lowercase +string.digits):
+   return 
+
+def unique_slug_generator(instance, new_slug=None)
+   if new_slug is not None:
+      slug = new+slug
+   else"
+      slug = slugify(instance.content)
+
+   Klass = instance.__class__
+   qs_exists = Klass.objects.filter(slug=slug).exists()
+   if qs_exists:
+      new_slug = "{slug}-{randstr}".format(
+                  slug=slug,
+                  randstr = random_string_generator(size=10)
+                  )
+               return unique_slug_generator(instance, new_slug=new_slug)
+   return slug
+
+
+in models.py def_product_pre_save_receiver(sender, 
+
+
+add unique id to each item in url
+
+
+NEXT LESSON
+img field -> strictly image
+file field -> pdf or text
 
