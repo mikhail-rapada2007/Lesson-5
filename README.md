@@ -202,3 +202,15 @@ NEXT LESSON
 img field -> strictly image
 file field -> pdf or text
 
+
+like slug you can make the text or imagename into gibberish to help with security
+in models.py
+def get_filename_ext(filepath):
+   base_name = os.path.basename(filepath)
+   name, ext = os.path.splitext(basename)
+   return name, ext
+   
+def upload_image_path(instance. filename):
+   new_filename = random_randint(1, 100000000)
+   name, ext = get
+
